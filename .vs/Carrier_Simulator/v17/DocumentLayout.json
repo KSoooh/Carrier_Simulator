@@ -1,0 +1,175 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Github\\Carrier_Simulator\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E7DF941B-D2D6-43DD-8F39-EF872FFA7689}|Carrier_Simulator\\Carrier_Simulator.csproj|d:\\github\\carrier_simulator\\carrier_simulator\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7DF941B-D2D6-43DD-8F39-EF872FFA7689}|Carrier_Simulator\\Carrier_Simulator.csproj|solutionrelative:carrier_simulator\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7DF941B-D2D6-43DD-8F39-EF872FFA7689}|Carrier_Simulator\\Carrier_Simulator.csproj|d:\\github\\carrier_simulator\\carrier_simulator\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{E7DF941B-D2D6-43DD-8F39-EF872FFA7689}|Carrier_Simulator\\Carrier_Simulator.csproj|solutionrelative:carrier_simulator\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7DF941B-D2D6-43DD-8F39-EF872FFA7689}|Carrier_Simulator\\Carrier_Simulator.csproj|d:\\github\\carrier_simulator\\carrier_simulator\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E7DF941B-D2D6-43DD-8F39-EF872FFA7689}|Carrier_Simulator\\Carrier_Simulator.csproj|solutionrelative:carrier_simulator\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7DF941B-D2D6-43DD-8F39-EF872FFA7689}|Carrier_Simulator\\Carrier_Simulator.csproj|d:\\github\\carrier_simulator\\carrier_simulator\\log4net.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{E7DF941B-D2D6-43DD-8F39-EF872FFA7689}|Carrier_Simulator\\Carrier_Simulator.csproj|solutionrelative:carrier_simulator\\log4net.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7DF941B-D2D6-43DD-8F39-EF872FFA7689}|Carrier_Simulator\\Carrier_Simulator.csproj|d:\\github\\carrier_simulator\\carrier_simulator\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7DF941B-D2D6-43DD-8F39-EF872FFA7689}|Carrier_Simulator\\Carrier_Simulator.csproj|solutionrelative:carrier_simulator\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7DF941B-D2D6-43DD-8F39-EF872FFA7689}|Carrier_Simulator\\Carrier_Simulator.csproj|d:\\github\\carrier_simulator\\carrier_simulator\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E7DF941B-D2D6-43DD-8F39-EF872FFA7689}|Carrier_Simulator\\Carrier_Simulator.csproj|solutionrelative:carrier_simulator\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7DF941B-D2D6-43DD-8F39-EF872FFA7689}|Carrier_Simulator\\Carrier_Simulator.csproj|d:\\github\\carrier_simulator\\carrier_simulator\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7DF941B-D2D6-43DD-8F39-EF872FFA7689}|Carrier_Simulator\\Carrier_Simulator.csproj|solutionrelative:carrier_simulator\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7DF941B-D2D6-43DD-8F39-EF872FFA7689}|Carrier_Simulator\\Carrier_Simulator.csproj|d:\\github\\carrier_simulator\\carrier_simulator\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{E7DF941B-D2D6-43DD-8F39-EF872FFA7689}|Carrier_Simulator\\Carrier_Simulator.csproj|solutionrelative:carrier_simulator\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7DF941B-D2D6-43DD-8F39-EF872FFA7689}|Carrier_Simulator\\Carrier_Simulator.csproj|d:\\github\\carrier_simulator\\carrier_simulator\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7DF941B-D2D6-43DD-8F39-EF872FFA7689}|Carrier_Simulator\\Carrier_Simulator.csproj|solutionrelative:carrier_simulator\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "packages.config",
+              "DocumentMoniker": "D:\\Github\\Carrier_Simulator\\Carrier_Simulator\\packages.config",
+              "RelativeDocumentMoniker": "Carrier_Simulator\\packages.config",
+              "ToolTip": "D:\\Github\\Carrier_Simulator\\Carrier_Simulator\\packages.config",
+              "RelativeToolTip": "Carrier_Simulator\\packages.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-06-17T05:09:04.781Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\Github\\Carrier_Simulator\\Carrier_Simulator\\App.xaml.cs",
+              "RelativeDocumentMoniker": "Carrier_Simulator\\App.xaml.cs",
+              "ToolTip": "D:\\Github\\Carrier_Simulator\\Carrier_Simulator\\App.xaml.cs",
+              "RelativeToolTip": "Carrier_Simulator\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T05:09:05.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "D:\\Github\\Carrier_Simulator\\Carrier_Simulator\\ViewModels\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "Carrier_Simulator\\ViewModels\\MainViewModel.cs",
+              "ToolTip": "D:\\Github\\Carrier_Simulator\\Carrier_Simulator\\ViewModels\\MainViewModel.cs",
+              "RelativeToolTip": "Carrier_Simulator\\ViewModels\\MainViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvw8AAABfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T05:09:15.658Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\Github\\Carrier_Simulator\\Carrier_Simulator\\App.xaml",
+              "RelativeDocumentMoniker": "Carrier_Simulator\\App.xaml",
+              "ToolTip": "D:\\Github\\Carrier_Simulator\\Carrier_Simulator\\App.xaml",
+              "RelativeToolTip": "Carrier_Simulator\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-17T04:31:03.789Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "log4net.config",
+              "DocumentMoniker": "D:\\Github\\Carrier_Simulator\\Carrier_Simulator\\log4net.config",
+              "RelativeDocumentMoniker": "Carrier_Simulator\\log4net.config",
+              "ToolTip": "D:\\Github\\Carrier_Simulator\\Carrier_Simulator\\log4net.config",
+              "RelativeToolTip": "Carrier_Simulator\\log4net.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-06-17T05:13:21.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "App.config",
+              "DocumentMoniker": "D:\\Github\\Carrier_Simulator\\Carrier_Simulator\\App.config",
+              "RelativeDocumentMoniker": "Carrier_Simulator\\App.config",
+              "ToolTip": "D:\\Github\\Carrier_Simulator\\Carrier_Simulator\\App.config",
+              "RelativeToolTip": "Carrier_Simulator\\App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-06-17T04:31:03.183Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\Github\\Carrier_Simulator\\Carrier_Simulator\\Views\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Carrier_Simulator\\Views\\MainWindow.xaml",
+              "ToolTip": "D:\\Github\\Carrier_Simulator\\Carrier_Simulator\\Views\\MainWindow.xaml",
+              "RelativeToolTip": "Carrier_Simulator\\Views\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-17T04:30:29.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "D:\\Github\\Carrier_Simulator\\Carrier_Simulator\\Properties\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "Carrier_Simulator\\Properties\\AssemblyInfo.cs",
+              "ToolTip": "D:\\Github\\Carrier_Simulator\\Carrier_Simulator\\Properties\\AssemblyInfo.cs",
+              "RelativeToolTip": "Carrier_Simulator\\Properties\\AssemblyInfo.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAADwvzQAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T05:10:30.836Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{269a02dc-6af8-11d3-bdc4-00c04f688e50}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Github\\Carrier_Simulator\\Carrier_Simulator\\Views\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Carrier_Simulator\\Views\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\Github\\Carrier_Simulator\\Carrier_Simulator\\Views\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Carrier_Simulator\\Views\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T04:30:29.368Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,8 +1,11 @@
 ﻿using Carrier_Simulator.Models;
+using LiveCharts;
+using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
@@ -31,14 +34,21 @@ namespace Carrier_Simulator
         private Point lineEnd = new Point(870, 150);            // 고정 끝점
         private Line fixedLine;
         private double scale = 1.0; // mm per pixel
-        private Rectangle carrierRect;
+
+        public AxesCollection LabelsXAxis { get; set; }
+        public AxesCollection YAxis { get; set; }
+        public SeriesCollection SeriesCollection { get; set; }
+
         public ObservableCollection<Section> Sections { get; } = new ObservableCollection<Section>();
 
         public MainWindow()
         {
             InitializeComponent();
+
+            this.DataContext = this;
             SectionGrid.ItemsSource = Sections;
             DarawFixedLine();
+            InitLiveChart();
         }
 
 
@@ -83,11 +93,22 @@ namespace Carrier_Simulator
             DrawCarrier(); // 캐리어 설정 후 캔버스에 그리기
         }
 
+        /// <summary>
+        /// 구간 그리드뷰 초기화
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
             Sections.Clear();
+            UpdateChart();
         }
 
+        /// <summary>
+        /// 구간 그리드뷰 설정
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SectionGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             // 예: 편집 중인 셀 정보 가져오기
@@ -114,6 +135,7 @@ namespace Carrier_Simulator
                     section.Position = sectionLength.ToString();
                     MessageBox.Show($"'{section.SectionNumber}'번 구간 위치가 '{sectionLength}'로 변경되었습니다.");
                     DrawMarkers();
+                    UpdateChart();
                 }
             }
         }
@@ -294,47 +316,6 @@ namespace Carrier_Simulator
             return Math.Sqrt(Math.Pow(lineEnd.X - lineStart.X, 2) + Math.Pow(lineEnd.Y - lineStart.Y, 2));
         }
 
-        private void DrawCarrier()
-        {
-            if (_carrier == null)
-            {
-                MessageBox.Show("캐리어 속성을 설정하세요.");
-                return;
-            }
-
-            if (!double.TryParse(TotalScale.Text, out double totalLengthMm) || totalLengthMm <= 0)
-            {
-                MessageBox.Show("전체 길이를 먼저 설정하세요.");
-                return;
-            }
-
-            double ratio = _carrier.Length / totalLengthMm; // 전체 길이에 대한 비율
-            double pixelWidth = (lineEnd.X - lineStart.X) * ratio; // 픽셀 단위 너비 계산
-            
-            if (carrierRect != null)
-            {
-                SimulationCanvas.Children.Remove(carrierRect); // 기존 캐리어 사각형 제거
-            }
-            carrierRect = new Rectangle
-            {
-                Width = pixelWidth,
-                Height = 40,
-                Fill = Brushes.Red,
-                Stroke = Brushes.Black,
-                StrokeThickness = 1,
-            };
-
-            double x = lineStart.X;
-            double y = lineStart.Y - 50;
-
-            Canvas.SetLeft(carrierRect, x);
-            Canvas.SetTop(carrierRect, y);
-
-            SimulationCanvas.Children.Add(carrierRect);
-        }
-
-        #endregion
-
         private void SimulationCanvas_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             DarawFixedLine(); // 캔버스 크기 변경 시 고정 선 다시 그리기
@@ -347,5 +328,67 @@ namespace Carrier_Simulator
             if (_carrier != null)
                 DrawCarrier();
         }
+
+        #endregion
+
+        #region Chat
+
+        private List<string> labels = new List<string>(); 
+
+        private void InitLiveChart()
+        {
+            labels.Add("0");
+
+            SeriesCollection = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Title = "속도",
+                    Values = new ChartValues<double>(Sections.Select(s => s.Speed > 0 ? s.Speed : 0))
+                }
+            };
+
+            LabelsXAxis = new AxesCollection
+            {
+                new Axis
+                {
+                    Title = "구간",
+                    Labels = labels,
+                    Separator = new LiveCharts.Wpf.Separator()
+                }
+            };
+
+            YAxis = new AxesCollection
+            {
+                new Axis
+                {
+                    Title = "속도",
+                    LabelFormatter = value => value.ToString("N0") + "ms"
+                }
+            };
+        }
+
+        private void UpdateChart()
+        {
+            if (LabelsXAxis != null && LabelsXAxis.Count > 0)
+            {
+                LabelsXAxis[0].Labels = Sections
+                    .Where(s => s.SectionNumber > 0)
+                    .Select(s => s.SectionNumber.ToString())
+                    .ToList();
+            }
+
+            if (SeriesCollection != null && SeriesCollection.Count > 0)
+            {
+                SeriesCollection[0].Values = new ChartValues<double>(
+                    Sections.Select(s => s.Speed)
+                );
+            }
+        }
+
+
+
+        #endregion
+
     }
 }

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Carrier_Simulator"
         xmlns:vm="clr-namespace:Carrier_Simulator.ViewModels"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"        
         Title="MainWindow" Height="550" Width="1200" MinHeight="450" MinWidth="700">
 
@@ -28,7 +29,10 @@
             <!-- 좌측 하단: 차트 -->
             <Border Grid.Row="1" Grid.Column="0" BorderBrush="Gray" BorderThickness="1" Margin="5">
                 <!-- 차트 컨트롤 들어갈 자리 -->
-                <TextBlock Text="차트 영역" Foreground="DarkGray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <lvc:CartesianChart Series="{Binding SeriesCollection}"
+                     AxisX="{Binding LabelsXAxis}"
+                     AxisY="{Binding YAxis}"         
+                     LegendLocation="Right"/>
             </Border>
         </Grid>
 

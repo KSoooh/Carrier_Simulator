@@ -1,6 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using log4net;
+﻿using log4net;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -10,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Carrier_Simulator.ViewModels
 {
-    public class MainViewModel : ObservableObject
+    public class MainViewModel 
     {
         static readonly ILog Logger =
            LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);

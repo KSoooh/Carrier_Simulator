@@ -33,6 +33,7 @@ namespace Carrier_Simulator
         private Point lineStart = new Point(50, 150);           // 고정 시작점
         private Point lineEnd = new Point(870, 150);            // 고정 끝점
         private Line fixedLine;
+        private Rectangle carrierRect;
         private double scale = 1.0; // mm per pixel
 
         public AxesCollection LabelsXAxis { get; set; }
@@ -327,6 +328,45 @@ namespace Carrier_Simulator
 
             if (_carrier != null)
                 DrawCarrier();
+        }
+
+        private void DrawCarrier()
+        {
+            if (_carrier == null)
+            {
+                MessageBox.Show("캐리어 속성을 설정하세요.");
+                return;
+            }
+
+            if (!double.TryParse(TotalScale.Text, out double totalLengthMm) || totalLengthMm <= 0)
+            {
+                MessageBox.Show("전체 길이를 먼저 설정하세요.");
+                return;
+            }
+
+            double ratio = _carrier.Length / totalLengthMm; // 전체 길이에 대한 비율
+            double pixelWidth = (lineEnd.X - lineStart.X) * ratio; // 픽셀 단위 너비 계산
+
+            if (carrierRect != null)
+            {
+                SimulationCanvas.Children.Remove(carrierRect); // 기존 캐리어 사각형 제거
+            }
+            carrierRect = new Rectangle
+            {
+                Width = pixelWidth,
+                Height = 40,
+                Fill = Brushes.Red,
+                Stroke = Brushes.Black,
+                StrokeThickness = 1,
+            };
+
+            double x = lineStart.X;
+            double y = lineStart.Y - 50;
+
+            Canvas.SetLeft(carrierRect, x);
+            Canvas.SetTop(carrierRect, y);
+
+            SimulationCanvas.Children.Add(carrierRect);
         }
 
         #endregion

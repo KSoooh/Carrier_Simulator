@@ -5,13 +5,109 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Carrier_Simulator"
         xmlns:vm="clr-namespace:Carrier_Simulator.ViewModels"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Window.DataContext>
-        <vm:MainViewModel/>
-    </Window.DataContext>
+        mc:Ignorable="d"        
+        Title="MainWindow" Height="550" Width="1200" MinHeight="450" MinWidth="700">
 
-    <Grid>
-        
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="*" MinWidth="220" MaxWidth="230" />
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+
+            <!-- 좌측 상단: 캔버스 -->
+            <Border Grid.Row="0" Grid.Column="0" BorderBrush="Gray" BorderThickness="1" Margin="5">
+                <Canvas x:Name="SimulationCanvas" Grid.Row="1" Background="LightGray" Margin="10"/>
+            </Border>
+
+            <!-- 좌측 하단: 차트 -->
+            <Border Grid.Row="1" Grid.Column="0" BorderBrush="Gray" BorderThickness="1" Margin="5">
+                <!-- 차트 컨트롤 들어갈 자리 -->
+                <TextBlock Text="차트 영역" Foreground="DarkGray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <!-- 우측 상단: 설정 패널 -->
+            <Grid Grid.Row="0" >
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Carrier Setting" FontSize="20" Margin="10 0 0 0" HorizontalAlignment="Left"/>
+
+                    <Border  Margin="10 10 0 10" BorderBrush="Black" BorderThickness="0.5">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="0"  HorizontalAlignment="Right" Margin="10 10 10 0">
+                                <TextBlock Text="길이 (m):" Width="80"/>
+                                <TextBox x:Name="LengthBox" Width="100"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="1"  HorizontalAlignment="Right" Margin="10 10 10 0">
+                                <TextBlock Text="무게 (kg):" Width="80"/>
+                                <TextBox x:Name="WeightBox" Width="100"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="2"  HorizontalAlignment="Right" Margin="10 10 10 0">
+                                <TextBlock Text="속도 (m/s):" Width="80"/>
+                                <TextBox x:Name="SpeedBox" Width="100"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Right" Margin="10 10 10 10">
+                                <TextBlock Text="가속도 (m/s²):" Width="80"/>
+                                <TextBox x:Name="AccelBox" Width="100"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Button Content="설정" Grid.Row="4" Width="80" Margin="0 0 0 0"
+                            HorizontalAlignment="Right" Click="BtnSetCarrier_Click"/>
+
+                    <TextBlock Text="Section Setting" FontSize="20" Margin="10 10 0 0" HorizontalAlignment="Left"/>
+                </StackPanel>
+            </Grid>
+
+
+            <Border Grid.Row="1"  Margin="10 10 0 0" BorderBrush="Black" BorderThickness="0.5">
+                <!-- 우측 하단: 구간 설정 -->
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Row 0: 전체 길이 + 추가 버튼 -->
+                    <StackPanel Orientation="Horizontal" Grid.Row="0"  HorizontalAlignment="Right" Margin="0 0 0 10">
+                        <TextBlock Text="전체 길이 (m):" Width="80"/>
+                        <TextBox x:Name="TotalScale" Width="100" TextChanged="TxtScale_TextChanged"/>
+                    </StackPanel>
+
+                    <!-- Row 1: DataGrid 테두리 포함 -->
+                    <Grid Grid.Row="1">
+                        <DataGrid x:Name="SectionGrid" ColumnWidth="Auto" AutoGenerateColumns="False" CanUserAddRows="False" HeadersVisibility="Column"
+                                  CellEditEnding="SectionGrid_CellEditEnding">
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="구간" Binding="{Binding SectionNumber}" Width="60" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="위치" Binding="{Binding Position}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <StackPanel Grid.Row="2" HorizontalAlignment="Right" Margin="0 10 0 0" Orientation="Horizontal">
+                <Button Content="초기화" Width="80" Click="BtnClear_Click"/>
+                <Button Content="구간 추가" Margin="10 0 0 0" Width="80" Click="BtnSectionAdd_Click"/>
+            </StackPanel>
+        </Grid>
     </Grid>
+
 </Window>

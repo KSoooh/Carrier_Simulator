@@ -134,7 +134,7 @@ namespace Carrier_Simulator
                 if (columnName == "Position")
                 {
                     section.Position = sectionLength.ToString();
-                    MessageBox.Show($"'{section.SectionNumber}'번 구간 위치가 '{sectionLength}'로 변경되었습니다.");
+                    //MessageBox.Show($"'{section.SectionNumber}'번 구간 위치가 '{sectionLength}'로 변경되었습니다.");
                     DrawMarkers();
                     UpdateChart();
                 }

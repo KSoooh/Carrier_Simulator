@@ -239,12 +239,15 @@ namespace Carrier_Simulator
 
             toRemove.ForEach(el => SimulationCanvas.Children.Remove(el));
 
-            double totalPixelLength = GetLinePixelLength();
+            double totalLengthMm;
+            if (!double.TryParse(TotalScale.Text, out totalLengthMm) || totalLengthMm <= 0)
+                return;
 
             foreach (var section in Sections)
             {
-                double position = Convert.ToDouble(section.Position); 
-                double ratio = position / (scale * totalPixelLength);
+                double position = Convert.ToDouble(section.Position);
+                double ratio = position / totalLengthMm; // 전체 길이에 대한 비율
+
                 double x = lineStart.X + (lineEnd.X - lineStart.X) * ratio;
                 double y = lineStart.Y + (lineEnd.Y - lineStart.Y) * ratio;
 
@@ -266,7 +269,7 @@ namespace Carrier_Simulator
                     Text = $"{position} mm",
                     FontWeight = FontWeights.Normal,
                     Foreground = Brushes.Black,
-                    Tag = "MakerLabel"
+                    Tag = "MarkerLabel"
                 };
                 SimulationCanvas.Children.Add(label);
                 Canvas.SetLeft(label, x - 20);

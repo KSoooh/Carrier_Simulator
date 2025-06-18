@@ -31,6 +31,7 @@ namespace Carrier_Simulator
         private Point lineEnd = new Point(870, 150);            // 고정 끝점
         private Line fixedLine;
         private double scale = 1.0; // mm per pixel
+        private Rectangle carrierRect;
         public ObservableCollection<Section> Sections { get; } = new ObservableCollection<Section>();
 
         public MainWindow()
@@ -78,6 +79,8 @@ namespace Carrier_Simulator
             {
                 MessageBox.Show("입력값을 정확히 입력해주세요.");
             }
+
+            DrawCarrier(); // 캐리어 설정 후 캔버스에 그리기
         }
 
         private void BtnClear_Click(object sender, RoutedEventArgs e)
@@ -153,17 +156,17 @@ namespace Carrier_Simulator
             };
             SimulationCanvas.Children.Add(startText);
             Canvas.SetLeft(startText, lineStart.X - 20);
-            Canvas.SetTop(startText, lineStart.Y - 25);
+            Canvas.SetTop(startText, lineStart.Y + 25);
 
             // ✅ 시작점 표시선 (수직선)
             var startMark = new Line
             {
                 X1 = lineStart.X,
-                Y1 = lineStart.Y - 10,
+                Y1 = lineStart.Y + 10,
                 X2 = lineStart.X,
                 Y2 = lineStart.Y,
                 Stroke = Brushes.Red,
-                StrokeThickness = 3
+                StrokeThickness = 2
             };
             SimulationCanvas.Children.Add(startMark);
 
@@ -171,11 +174,11 @@ namespace Carrier_Simulator
             var endMark = new Line
             {
                 X1 = lineEnd.X,
-                Y1 = lineEnd.Y - 10,
+                Y1 = lineEnd.Y + 10,
                 X2 = lineEnd.X,
                 Y2 = lineEnd.Y,
                 Stroke = Brushes.Red,
-                StrokeThickness = 3
+                StrokeThickness = 2
             };
             SimulationCanvas.Children.Add(endMark);
         }
@@ -207,7 +210,9 @@ namespace Carrier_Simulator
 
         private void DrawEndLabel(double lengthMm)
         {
-            var existing = SimulationCanvas.Children.OfType<TextBlock>().Where(tb => tb.Text.EndsWith("mm") && tb.Text != "0 mm").ToList();
+            // 기존 EndLabel만 지움 (Tag 사용)
+            var existing = SimulationCanvas.Children.OfType<TextBlock>()
+                .Where(tb => tb.Tag?.ToString() == "EndLabel").ToList();
             foreach (var tb in existing)
                 SimulationCanvas.Children.Remove(tb);
 
@@ -216,11 +221,12 @@ namespace Carrier_Simulator
             {
                 Text = $"{lengthMm} mm",
                 FontWeight = FontWeights.Bold,
-                Foreground = Brushes.Blue
+                Foreground = Brushes.Blue,
+                Tag = "EndLabel"
             };
             SimulationCanvas.Children.Add(endText);
-            Canvas.SetLeft(endText, lineEnd.X - 25);
-            Canvas.SetTop(endText, lineEnd.Y - 30);
+            Canvas.SetLeft(endText, lineEnd.X - 20);
+            Canvas.SetTop(endText, lineEnd.Y + 25);
         }
 
         private void DrawMarkers()
@@ -288,6 +294,45 @@ namespace Carrier_Simulator
             return Math.Sqrt(Math.Pow(lineEnd.X - lineStart.X, 2) + Math.Pow(lineEnd.Y - lineStart.Y, 2));
         }
 
+        private void DrawCarrier()
+        {
+            if (_carrier == null)
+            {
+                MessageBox.Show("캐리어 속성을 설정하세요.");
+                return;
+            }
+
+            if (!double.TryParse(TotalScale.Text, out double totalLengthMm) || totalLengthMm <= 0)
+            {
+                MessageBox.Show("전체 길이를 먼저 설정하세요.");
+                return;
+            }
+
+            double ratio = _carrier.Length / totalLengthMm; // 전체 길이에 대한 비율
+            double pixelWidth = (lineEnd.X - lineStart.X) * ratio; // 픽셀 단위 너비 계산
+            
+            if (carrierRect != null)
+            {
+                SimulationCanvas.Children.Remove(carrierRect); // 기존 캐리어 사각형 제거
+            }
+            carrierRect = new Rectangle
+            {
+                Width = pixelWidth,
+                Height = 40,
+                Fill = Brushes.Red,
+                Stroke = Brushes.Black,
+                StrokeThickness = 1,
+            };
+
+            double x = lineStart.X;
+            double y = lineStart.Y - 50;
+
+            Canvas.SetLeft(carrierRect, x);
+            Canvas.SetTop(carrierRect, y);
+
+            SimulationCanvas.Children.Add(carrierRect);
+        }
+
         #endregion
 
         private void SimulationCanvas_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -298,6 +343,9 @@ namespace Carrier_Simulator
                 DrawEndLabel(realLengthMm); // 캔버스 크기 변경 시 끝점 레이블 다시 그리기
 
             if (Sections.Count > 0) ;
+
+            if (_carrier != null)
+                DrawCarrier();
         }
     }
 }

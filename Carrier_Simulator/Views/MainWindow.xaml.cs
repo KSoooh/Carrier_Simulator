@@ -42,6 +42,15 @@ namespace Carrier_Simulator
 
         public ObservableCollection<Section> Sections { get; } = new ObservableCollection<Section>();
 
+       /* public class Section
+        {
+            public int SectionNumber { get; set; }
+            public string Position { get; set; } // 구간 위치
+            public double TargetTimeSec { get; set; }   // 제한시간
+            public double CalculatedSpeed { get; set; } // 도달시 속도
+            public double CalculatedAcceleration { get; set; } // 해당구간 가속도
+        }*/
+
         public MainWindow()
         {
             InitializeComponent();
@@ -140,6 +149,17 @@ namespace Carrier_Simulator
                 }
             }
         }
+
+       /* private void RecalculateSection()
+        {
+            if (!double.TryParse(TotalScale.Text, out double totallengthMm) || totallengthMm <= 0)
+                return;
+
+            double prevPos = 0; //  이전 구간 위치
+            double prevSpeed = 0; // 이전 구간 속도
+
+            foreach
+        }*/
 
       
 

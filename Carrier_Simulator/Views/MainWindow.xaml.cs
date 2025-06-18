@@ -274,7 +274,8 @@ namespace Carrier_Simulator
 
             foreach (var section in Sections)
             {
-                double position = Convert.ToDouble(section.Position);
+                if (!double.TryParse(section.Position?.ToString(), out double position))
+                    continue;
                 double ratio = position / totalLengthMm; // 전체 길이에 대한 비율
 
                 double x = lineStart.X + (lineEnd.X - lineStart.X) * ratio;
@@ -325,6 +326,7 @@ namespace Carrier_Simulator
                 DrawEndLabel(realLengthMm); // 캔버스 크기 변경 시 끝점 레이블 다시 그리기
 
             if (Sections.Count > 0) ;
+                DrawMarkers(); // 캔버스 크기 변경 시 마커 다시 그리기    
 
             if (_carrier != null)
                 DrawCarrier();

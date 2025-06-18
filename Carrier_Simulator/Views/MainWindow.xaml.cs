@@ -121,6 +121,16 @@ namespace Carrier_Simulator
 
         private void DarawFixedLine()
         {
+            double margin = 50; // 캔버스 여백
+
+            double width = SimulationCanvas.ActualWidth;
+            double height = SimulationCanvas.ActualHeight;
+
+            if (width <= margin * 2 || height < 1) return; // 캔버스 크기가 너무 작으면 그리지 않음
+
+            lineStart = new Point(margin, height / 2);              // 왼쪽 중간
+            lineEnd = new Point(width - margin, height / 2);        // 오른쪽 중간
+
             SimulationCanvas.Children.Clear(); // 캔버스 초기화
 
             fixedLine = new Line
@@ -277,5 +287,14 @@ namespace Carrier_Simulator
 
         #endregion
 
+        private void SimulationCanvas_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            DarawFixedLine(); // 캔버스 크기 변경 시 고정 선 다시 그리기
+
+            if (double.TryParse(TotalScale.Text, out double realLengthMm))
+                DrawEndLabel(realLengthMm); // 캔버스 크기 변경 시 끝점 레이블 다시 그리기
+
+            if (Sections.Count > 0) ;
+        }
     }
 }

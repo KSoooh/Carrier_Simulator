@@ -22,7 +22,7 @@
 
             <!-- 좌측 상단: 캔버스 -->
             <Border Grid.Row="0" Grid.Column="0" BorderBrush="Gray" BorderThickness="1" Margin="5">
-                <Canvas x:Name="SimulationCanvas" Grid.Row="1" Background="LightGray" Margin="10"/>
+                <Canvas x:Name="SimulationCanvas" Grid.Row="1" Background="LightGray" Margin="10" SizeChanged="SimulationCanvas_SizeChanged"/>
             </Border>
 
             <!-- 좌측 하단: 차트 -->
